@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+<body>
+    <h1>Open your console (Press F12) and type game() to start!</h1>
+    <script>
+        // Score
+        let playerScore = 0;
+        let computerScore = 0;
+
+        // Generating computer's play
+
+        function computerPlay() {
+            let computerSelection = Math.floor(Math.random() * 3);
+            if (computerSelection == 0) {
+                return computerSelection = "rock"; 
+            } else if (computerSelection == 1) {
+                return computerSelection = "paper";
+            } else {
+                return computerSelection = "scissors";
+            }
+        }
+
+        // Round play
+
+        function playRound(playerSelection, computerSelection) {
+            let roundResult;
+                        playerSelection = playerSelection.toLowerCase();
+
+            if (playerSelection == computerSelection) {
+                roundResult = "DRAW"; 
+            } else if ( (playerSelection == 'rock' && computerSelection == 'scissors') || 
+                        (playerSelection == 'paper' && computerSelection == 'rock') ||
+                        (playerSelection == 'scissors' && computerSelection == 'paper'))
+                {
+                playerScore++;
+                roundResult = "WIN";
+            } else if ( (playerSelection == 'rock' && computerSelection == 'paper') || 
+                        (playerSelection == 'paper' && computerSelection == 'scissors') ||
+                        (playerSelection == 'scissors' && computerSelection == 'rock'))
+                {
+                computerScore++;
+                roundResult = "LOSE";
+            } else {
+                roundResult = "INVALID";
+            }
+            return "Player chooses " + playerSelection + ". Computer chooses " + computerSelection + ". Player " + roundResult;
+        }
+        // Game play
+
+        function game() {
+            let gameWin;
+            console.log(playRound(playerSelection = prompt("rock, paper or scissors?"), computerPlay()));
+            console.log(playRound(playerSelection = prompt("rock, paper or scissors?"), computerPlay()));
+            console.log(playRound(playerSelection = prompt("rock, paper or scissors?"), computerPlay()));
+            console.log(playRound(playerSelection = prompt("rock, paper or scissors?"), computerPlay()));
+            console.log(playRound(playerSelection = prompt("rock, paper or scissors?"), computerPlay()));
+            
+            if (playerScore > computerScore) {
+                gameWin = "Player Wins";
+            } else if (playerScore == computerScore) {
+                gameWin = "DRAW";
+            } else {
+                gameWin = "Computer Wins"
+            }
+            console.log("Player score:" + playerScore + " Computer score:" + computerScore + " " + gameWin)
+        }                     
+    </script>
+</body>
+</html>
